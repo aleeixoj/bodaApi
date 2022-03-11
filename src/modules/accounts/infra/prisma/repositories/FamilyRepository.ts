@@ -47,7 +47,7 @@ class FamilyRepository implements IFamilyRepository {
     return family;
   }
   async findByAccessCode(access_code: string): Promise<Family | null> {
-    const family = await prisma.family.findFirst({
+    const family = await prisma.family.findUnique({
       where: { access_code },
       include: { users: true },
     });

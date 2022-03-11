@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { FindConfirmedByFamilyUseCase } from '../FindConfirmedByFamily/FindConfirmedByFamilyUseCase';
+import { FindFamilyByAccessCodeUseCase } from './FindFamilyByAccessCodeUseCase';
 
 class FindFamilyByAccessCodeController {
   async handle(request: Request, response: Response): Promise<Response> {
     const code = request.headers.access_code as string;
     const findFamilyByAccessCodeUseCase = container.resolve(
-      FindConfirmedByFamilyUseCase
+      FindFamilyByAccessCodeUseCase
     );
 
     const family = await findFamilyByAccessCodeUseCase.execute(code);
