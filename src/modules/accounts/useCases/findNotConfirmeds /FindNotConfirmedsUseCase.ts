@@ -1,16 +1,16 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IFamilyRepository } from '@modules/accounts/repositories/IFamilyRepository';
-import { Family } from '@prisma/client';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { User } from '@prisma/client';
 
 @injectable()
 class FindNotConfirmedsUseCase {
   constructor(
-    @inject('FamilyRepository')
-    private familyRepository: IFamilyRepository
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository
   ) {}
-  async execute(): Promise<Family[]> {
-    const confirmed = await this.familyRepository.findByNotConfirmeds();
+  async execute(): Promise<User[]> {
+    const confirmed = await this.usersRepository.findByNotConfirmeds();
     return confirmed;
   }
 }

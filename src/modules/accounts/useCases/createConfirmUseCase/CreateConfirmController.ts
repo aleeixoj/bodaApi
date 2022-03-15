@@ -5,16 +5,17 @@ import { CreateConfirmUseCase } from './CreateConfirmUseCase';
 
 class CreateConfirmController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
-    const { isConfirmed } = request.body;
+    const { access_code } = request.params;
+    const { data } = request.body;
+
     const createConfirmUseCase = container.resolve(CreateConfirmUseCase);
 
     const confirmed = await createConfirmUseCase.execute({
-      id,
-      isConfirmed,
+      access_code,
+      data,
     });
 
-    return response.status(201).json(confirmed);
+    return response.status(201).json({ data: confirmed, message: 'sucess' });
   }
 }
 export { CreateConfirmController };

@@ -12,10 +12,7 @@ interface IFamilyRepository {
   findById(id: string): Promise<Family | null>;
   findByAccessCode(access_code: string): Promise<Family | null>;
   findByName(name: string): Promise<Family | null>;
-  updateConfirm(id: string, isConfirmed: boolean): Promise<Family>;
   findByfamilyId(id: string): Promise<Family | null>;
-  findByConfirmeds(): Promise<Family[]>;
-  findByNotConfirmeds(): Promise<Family[]>;
 }
 
 export { IFamilyRepository };

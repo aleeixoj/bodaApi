@@ -13,7 +13,7 @@ class CreateFamilyUserController {
       users_id,
     });
 
-    return response.status(201).json(familyUser);
+    return response.status(201).send();
   }
 }
 export { CreateFamilyUserController };

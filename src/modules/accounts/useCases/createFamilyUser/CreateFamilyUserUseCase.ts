@@ -18,14 +18,14 @@ class CreateFamilyUserUseCase {
     @inject('UsersRepository')
     private usersRepository: IUsersRepository
   ) {}
-  async execute({ family_id, users_id }: IRequest): Promise<User> {
+  async execute({ family_id, users_id }: IRequest): Promise<void> {
     const familyExists = await this.familyrepository.findById(family_id);
 
     if (!familyExists) {
       throw new AppError(`Family doesn't exists!`);
     }
 
-    const user: Promise<User> = users_id.map(async (id) => {
+    users_id.map(async (id) => {
       const user: User | null = await this.usersRepository.findById(id);
       const userFamily = await this.usersRepository.addFamily(
         family_id,
@@ -33,8 +33,6 @@ class CreateFamilyUserUseCase {
       );
       return userFamily;
     });
-
-    return user;
   }
 }
 export { CreateFamilyUserUseCase };

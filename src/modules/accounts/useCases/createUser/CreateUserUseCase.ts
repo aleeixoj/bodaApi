@@ -13,8 +13,8 @@ class CreateUserUseCase {
     @inject('UsersRepository')
     private usersRepository: IUsersRepository
   ) {}
-  async execute({ name, phone }: ICreateUser): Promise<User> {
-    const userExists = await this.usersRepository.findByPhone(phone);
+  async execute({ name }: ICreateUser): Promise<User> {
+    const userExists = await this.usersRepository.findByName(name);
 
     if (userExists) {
       throw new AppError('User Already exists', 500);
@@ -22,7 +22,6 @@ class CreateUserUseCase {
 
     const createUser = await this.usersRepository.create({
       name,
-      phone,
     });
 
     return createUser;

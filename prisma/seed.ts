@@ -6,8 +6,8 @@ async function main() {
       name: 'noivos',
       users: {
         create: [
-          { name: 'Aleixo', phone: '41988602657', isAdmin: true },
-          { name: 'Bruna', phone: '41992663785', isAdmin: true },
+          { name: 'Aleixo', isConfirmed: true, isAdmin: true },
+          { name: 'Bruna', isConfirmed: true, isAdmin: true },
         ],
       },
       access_code: 'gtr',

@@ -7,13 +7,6 @@ import {
 import { Family, User } from '@prisma/client';
 
 class FamilyRepository implements IFamilyRepository {
-  async updateConfirm(id: string, isConfirmed: boolean): Promise<Family> {
-    const family = await prisma.family.update({
-      where: { id },
-      data: { confirm: isConfirmed },
-    });
-    return family;
-  }
   async create({ name, access_code }: IFamily): Promise<Family> {
     const family = await prisma.family.create({
       data: {
@@ -55,20 +48,8 @@ class FamilyRepository implements IFamilyRepository {
   }
 
   async findByfamilyId(id: string): Promise<Family | null> {
-    const familyIsConfirmed = await prisma.family.findFirst({
+    const familyIsConfirmed = await prisma.family.findUnique({
       where: { id },
-    });
-    return familyIsConfirmed;
-  }
-  async findByConfirmeds(): Promise<Family[]> {
-    const familyIsConfirmed = await prisma.family.findMany({
-      where: { confirm: true },
-    });
-    return familyIsConfirmed;
-  }
-  async findByNotConfirmeds(): Promise<Family[]> {
-    const familyIsConfirmed = await prisma.family.findMany({
-      where: { confirm: false },
     });
     return familyIsConfirmed;
   }

@@ -5,6 +5,21 @@ import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepositor
 import { User } from '@prisma/client';
 
 class UsersRepository implements IUsersRepository {
+  async findByName(name: string): Promise<User | null> {
+    const user = await prisma.user.findFirst({
+      where: { name },
+    });
+    return user;
+  }
+  async updateById(user_id: string, isConfirmed: boolean): Promise<User> {
+    const user = await prisma.user.update({
+      where: { id: user_id },
+      data: {
+        isConfirmed,
+      },
+    });
+    return user;
+  }
   async addFamily(family_id: string, user_id: string): Promise<User> {
     const user = await prisma.user.update({
       where: { id: user_id },
@@ -12,17 +27,16 @@ class UsersRepository implements IUsersRepository {
     });
     return user;
   }
-  async create({ name, phone }: ICreateUser): Promise<User> {
+  async create({ name }: ICreateUser): Promise<User> {
     const createdUser = await prisma.user.create({
       data: {
         name,
-        phone,
       },
     });
 
     return createdUser;
   }
-  async findById(id: string): Promise<User> {
+  async findById(id: string): Promise<User | null> {
     const user = await prisma.user.findUnique({
       where: { id },
     });
@@ -33,13 +47,17 @@ class UsersRepository implements IUsersRepository {
     return users;
   }
 
-  async findByPhone(phone: string): Promise<User | null> {
-    const user = await prisma.user.findFirst({
-      where: {
-        phone,
-      },
+  async findByConfirmeds(): Promise<User[]> {
+    const userIsConfirmed = await prisma.user.findMany({
+      where: { isConfirmed: true },
     });
-    return user;
+    return userIsConfirmed;
+  }
+  async findByNotConfirmeds(): Promise<User[]> {
+    const userIsConfirmed = await prisma.user.findMany({
+      where: { isConfirmed: false },
+    });
+    return userIsConfirmed;
   }
 }
 

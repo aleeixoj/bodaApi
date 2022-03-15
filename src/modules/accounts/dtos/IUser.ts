@@ -11,7 +11,6 @@ interface IAddress {
 
 interface ICreateUser {
   name: string;
-  phone: string;
 }
 
 export { IAddress, ICreateUser };
