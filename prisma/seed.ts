@@ -1,4 +1,4 @@
-import { prisma } from '../src/database/prismaClient';
+import { prisma } from '@database/prismaClient';
 
 async function main() {
   await prisma.family.create({

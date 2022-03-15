@@ -1,5 +1,4 @@
-import { prisma } from 'database/prismaClient';
-
+import { prisma } from '@database/prismaClient';
 import { ICreateUser } from '@modules/accounts/dtos/IUser';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { User } from '@prisma/client';

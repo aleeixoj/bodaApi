@@ -26,7 +26,7 @@ class CreateFamilyUserUseCase {
     }
 
     users_id.map(async (id) => {
-      const user: User | null = await this.usersRepository.findById(id);
+      const user: any = await this.usersRepository.findById(id);
       const userFamily = await this.usersRepository.addFamily(
         family_id,
         user.id
