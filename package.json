@@ -5,7 +5,7 @@
   "author": "aleeixoj <aleeixojunior2016@hotmail.com>",
   "license": "MIT",
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node -r tsconfig-paths/register prisma/seed.ts"
   },
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",

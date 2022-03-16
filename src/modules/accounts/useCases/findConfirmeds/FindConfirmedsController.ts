@@ -8,7 +8,9 @@ class FindConfirmedsController {
     const findConfirmedsUseCase = container.resolve(FindConfirmedsUseCase);
     const confirmeds = await findConfirmedsUseCase.execute();
 
-    return response.status(200).send(confirmeds);
+    return response
+      .status(200)
+      .json({ data: confirmeds, count: confirmeds.length });
   }
 }
 export { FindConfirmedsController };

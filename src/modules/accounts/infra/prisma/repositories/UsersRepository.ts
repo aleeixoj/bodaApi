@@ -1,3 +1,5 @@
+import { count } from 'console';
+
 import { prisma } from '@database/prismaClient';
 import { ICreateUser } from '@modules/accounts/dtos/IUser';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
