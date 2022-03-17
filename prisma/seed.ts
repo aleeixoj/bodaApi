@@ -312,20 +312,6 @@ async function main() {
   });
   await prisma.family.create({
     data: {
-      name: 'Carvalho',
-      users: {
-        create: [
-          { name: 'Evelyn' },
-          { name: 'Gustavo' },
-          { name: 'Arthur' },
-          { name: 'Miguel' },
-        ],
-      },
-      access_code: 'jetta',
-    },
-  });
-  await prisma.family.create({
-    data: {
       name: 'Godinho Kmiecik',
       users: {
         create: [
@@ -350,20 +336,6 @@ async function main() {
           { name: 'Larissa' },
           { name: 'Felipe' },
           { name: 'Matheus' },
-        ],
-      },
-      access_code: 'audi_tt',
-    },
-  });
-  await prisma.family.create({
-    data: {
-      name: 'Godinho Kmiecik',
-      users: {
-        create: [
-          { name: 'Alesandra' },
-          { name: 'Vandi' },
-          { name: 'Nicolly' },
-          { name: 'Nicollas' },
         ],
       },
       access_code: 'audi_tt',
