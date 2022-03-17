@@ -8,7 +8,7 @@ class FindUsersController {
     const findUsersUseCase = container.resolve(FindUsersUseCase);
     const users = await findUsersUseCase.execute();
 
-    return response.status(201).json(users);
+    return response.status(201).json({ data: users, count: users.length });
   }
 }
 export { FindUsersController };

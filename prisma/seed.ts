@@ -66,21 +66,6 @@ async function main() {
   });
   await prisma.family.create({
     data: {
-      name: 'dos Santos de Sá',
-      users: {
-        create: [
-          { name: 'Adriano' },
-          { name: 'Jessica' },
-          { name: 'Sara' },
-          { name: 'Lorenzo' },
-          { name: 'Davi' },
-        ],
-      },
-      access_code: 'fusion',
-    },
-  });
-  await prisma.family.create({
-    data: {
       name: 'Vieira de Sá',
       users: {
         create: [{ name: 'Zuleida' }],
