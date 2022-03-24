@@ -14,7 +14,7 @@ const findNotConfirmedsController = new FindNotConfirmedsController();
 const findConfirmedByFamilyController = new FindConfirmedByFamilyController();
 const findFamilyByAccessCodeController = new FindFamilyByAccessCodeController();
 
-confirmRoutes.post('/create/:access_code', createConfirmController.handle);
+// confirmRoutes.post('/create/:access_code', createConfirmController.handle);
 confirmRoutes.get('', findConfirmedsController.handle);
 confirmRoutes.get('/not', findNotConfirmedsController.handle);
 confirmRoutes.get('/family/:id', findConfirmedByFamilyController.handle);
